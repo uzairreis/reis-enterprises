@@ -2,8 +2,8 @@
   /* Black, white, gold accent and subtle gray tones */
   --color-bg: #111111;
   --color-surface: #181818;
-  --color-primary: #f7c873;
-  --color-primary-light: #ffe7b2;
+  --color-primary: #d4af37; /* Changed to Gold (#d4af37) */
+  --color-primary-light: #f0dfa5;
   --color-white: #ffffff;
   --color-text: #f5f5f5;
   --color-gray: #888888;
@@ -165,8 +165,8 @@ body {
 .btn {
   border: none;
   outline: none;
-  padding: 0.7em 2.2em;
-  font-size: 1em;
+  padding: 1em 2.8em;
+  font-size: 1.1em;
   border-radius: 36px;
   font-weight: 600;
   vertical-align: middle;
@@ -221,6 +221,8 @@ body {
   padding: 64px 0px;
   padding-left: 2.5%;
   padding-right: 2.5%;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
 }
 
 /* ABOUT */
@@ -302,6 +304,9 @@ body {
   flex-direction: column;
   gap: 2.2em;
   margin-top: 1.5em;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 0.3s;
 }
 .testimonial-text {
   color: var(--color-white);
@@ -320,6 +325,9 @@ body {
 /* CONTACT */
 .contact-content {
   margin-top: 1em;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 0.6s;
 }
 
 .contact-form {
@@ -367,6 +375,12 @@ body {
   text-decoration: none;
 }
 
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   .container { padding-left: 5%; padding-right: 5%; }
@@ -381,13 +395,26 @@ body {
   .navbar { padding: 0.4rem 1.5vw; }
   .section-header h2 { font-size: 1.37rem; }
   .hero { min-height: 335px; padding-top: 76px; }
-  .hero-title { font-size: 2em; }
+  .hero-title { font-size: 2rem; }
   .hero-tagline { font-size: 1.09rem; }
+  .hero-description { font-size: 0.95rem; }
   .hero-cta { flex-direction: column; gap: 0.8rem; }
-  .service-list { font-size: .99em; }
-  .access-content { font-size: .99rem; padding: 1.1em 0.8em; }
+  .service-list { font-size: 0.99em; }
+  .access-content { font-size: 0.99rem; padding: 1.1em 0.8em; }
   .testimonials-list { gap: 1em; }
   .about-content { font-size: 1em; }
+  .btn {
+    padding: 1.1em 3.2em;
+    font-size: 1.2rem;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  .container {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
 }
 
 /* Responsive Hamburger */
