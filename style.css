@@ -2,7 +2,7 @@
   /* Black, white, gold accent and subtle gray tones */
   --color-bg: #111111;
   --color-surface: #181818;
-  --color-primary: #d4af37; /* Changed to Gold (#d4af37) */
+  --color-primary: #d4af37; /* Gold color */
   --color-primary-light: #f0dfa5;
   --color-white: #ffffff;
   --color-text: #f5f5f5;
@@ -221,8 +221,19 @@ body {
   padding: 64px 0px;
   padding-left: 2.5%;
   padding-right: 2.5%;
+}
+
+/* Fade-in animation classes */
+.fade-in-section {
   opacity: 0;
-  animation: fadeIn 1s ease forwards;
+  transform: translateY(15px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: none;
 }
 
 /* ABOUT */
@@ -299,35 +310,17 @@ body {
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
 }
+
 .testimonials-list {
   display: flex;
   flex-direction: column;
   gap: 2.2em;
   margin-top: 1.5em;
-  opacity: 0;
-  animation: fadeIn 1s ease forwards;
-  animation-delay: 0.3s;
-}
-.testimonial-text {
-  color: var(--color-white);
-  font-size: 1.1em;
-  line-height: 1.5;
-  font-style: italic;
-  margin-bottom: 0.5em;
-}
-.testimonial-author {
-  color: var(--color-primary);
-  font-size: 0.99em;
-  font-weight: 500;
-  letter-spacing: 0.02em;
 }
 
-/* CONTACT */
+/* Contact */
 .contact-content {
   margin-top: 1em;
-  opacity: 0;
-  animation: fadeIn 1s ease forwards;
-  animation-delay: 0.6s;
 }
 
 .contact-form {
@@ -370,20 +363,66 @@ body {
   font-size: 1.05em;
   line-height: 1.4;
 }
+
 .contact-details a {
   color: var(--color-primary);
   text-decoration: none;
 }
 
-/* Fade-in animation */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+/* GENERAL TEXT ELEMENTS */
+.testimonial-text {
+  color: var(--color-white);
+  font-size: 1.1em;
+  line-height: 1.5;
+  font-style: italic;
+  margin-bottom: 0.5em;
+}
+.testimonial-author {
+  color: var(--color-primary);
+  font-size: 0.99em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Fade-in on testimonials and contact */
+.testimonials-list,
+.contact-content {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+
+.testimonials-list.is-visible,
+.contact-content.is-visible {
+  opacity: 1;
+  transform: none;
 }
 
 /* Responsive */
 @media (max-width: 900px) {
   .container { padding-left: 5%; padding-right: 5%; }
+  .nav-menu {
+    position: absolute;
+    right: 0;
+    top: 60px;
+    background: var(--color-surface);
+    flex-direction: column;
+    width: 220px;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.23s;
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 4px 22px rgba(0,0,0,0.085);
+  }
+  .nav-menu.active {
+    height: 276px;
+    padding: 1.2em 0;
+  }
+  .nav-toggle {
+    display: flex;
+  }
+  .navbar { min-height: 55px; }
 }
 @media (max-width: 700px) {
   html { font-size: 17px; }
@@ -415,33 +454,4 @@ body {
     padding-left: 5vw;
     padding-right: 5vw;
   }
-}
-
-/* Responsive Hamburger */
-@media (max-width: 900px) {
-  .nav-menu {
-    position: absolute;
-    right: 0;
-    top: 60px;
-    background: var(--color-surface);
-    flex-direction: column;
-    width: 220px;
-    height: 0;
-    overflow: hidden;
-    transition: height 0.23s;
-    border-radius: 0 0 6px 6px;
-    box-shadow: 0 4px 22px rgba(0,0,0,0.085);
-  }
-  .nav-menu.active {
-    height: 276px;
-    padding: 1.2em 0;
-  }
-  .nav-toggle {
-    display: flex;
-  }
-  .navbar { min-height: 55px; }
-}
-
-.nav-menu.active {
-  display: flex;
 }
