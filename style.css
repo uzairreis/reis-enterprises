@@ -2,7 +2,7 @@
   /* Black, white, gold accent and subtle gray tones */
   --color-bg: #111111;
   --color-surface: #181818;
-  --color-primary: #d4af37; /* Gold color */
+  --color-primary: #d4af37;
   --color-primary-light: #f0dfa5;
   --color-white: #ffffff;
   --color-text: #f5f5f5;
@@ -382,21 +382,6 @@ body {
   font-size: 0.99em;
   font-weight: 500;
   letter-spacing: 0.02em;
-}
-
-/* Fade-in on testimonials and contact */
-.testimonials-list,
-.contact-content {
-  opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  will-change: opacity, transform;
-}
-
-.testimonials-list.is-visible,
-.contact-content.is-visible {
-  opacity: 1;
-  transform: none;
 }
 
 /* Responsive */
